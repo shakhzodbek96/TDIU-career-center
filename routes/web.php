@@ -6,7 +6,7 @@ use App\Http\Controllers\Blade\RoleController;
 use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\StatusController;
-
+use App\Http\Controllers\Blade\FacultyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +65,16 @@ Route::group(['middleware' => 'auth'],function (){
    Route::get('/status/edit/{id}',[StatusController::class,'edit'])->name('statusEdit');
    Route::post('/status/update/{id}',[StatusController::class,'update'])->name('statusUpdate');
    Route::delete('/status/destroy/{id}',[StatusController::class,'destroy'])->name('statusDelete');
+
+    // Faculty
+    Route::get('/faculty',[FacultyController::class,'index'])->name('facultyIndex');
+    Route::get('/faculty/create',[FacultyController::class,'create'])->name('facultyCreate');
+    Route::post('/faculty/create',[FacultyController::class,'store'])->name('facultyStore');
+    Route::get('/faculty/edit/{id}',[FacultyController::class,'edit'])->name('facultyEdit');
+    Route::post('/faculty/update/{id}',[FacultyController::class,'update'])->name('facultyUpdate');
+    Route::delete('/faculty/destroy/{id}',[FacultyController::class,'destroy'])->name('facultyDelete');
+
+
 });
 
 // Change language session condition

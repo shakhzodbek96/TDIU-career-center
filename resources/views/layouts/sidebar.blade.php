@@ -49,11 +49,19 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         @can('status.view')
         <li class="nav-item ">
-            <a href="{{ route('statusIndex') }}" class="nav-link">
+            <a href="{{ route('statusIndex') }}" class="nav-link {{ Request::is('status*') ? "active":'' }}">
                 <i class="far fa-arrow-alt-circle-right"></i>
                 <p>Status</p>
             </a>
         </li>
+        @endcan
+        @can('faculty.view')
+            <li class="nav-item ">
+                <a href="{{ route('facultyIndex') }}" class="nav-link {{ Request::is('faculty*') ? "active":'' }}">
+                    <i class="far fa-arrow-alt-circle-right"></i>
+                    <p>Fakultet</p>
+                </a>
+            </li>
         @endcan
     </ul>
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

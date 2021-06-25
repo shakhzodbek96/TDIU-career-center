@@ -1,5 +1,16 @@
 <?php
 
+if (!function_exists('abort_if_forbidden')) {
+    function abort_if_forbidden(string $permission,$message = "Ruxsat etilmagan tashrif!"):void
+    {
+        abort_if (
+            !auth()->user()->can($permission),
+            403,
+            $message
+        );
+    }
+}
+
 if (!function_exists('setUserTheme')) {
     function setUserTheme($theme)
     {

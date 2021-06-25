@@ -13,6 +13,7 @@ class StatusController extends Controller
      */
     public function index()
     {
+        abort_if_forbidden('status.view');
         $statuses = Status::all();
         return view('pages.status.index',compact('statuses'));
     }
@@ -22,6 +23,7 @@ class StatusController extends Controller
      */
     public function create()
     {
+        abort_if_forbidden('status.add');
         return view("pages.status.add");
     }
 
@@ -32,8 +34,9 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if_forbidden('status.add');
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required|unique:statuses'
         ]);
         $status = Status::create([
             'name' => $request->name
@@ -43,22 +46,12 @@ class StatusController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     */
-    public function show($id)
-    {
-        $status = Status::findOrFail($id);
-        return view('pages.status.edit',compact('status'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      * @param  int  $id
      */
     public function edit($id)
     {
+        abort_if_forbidden('status.edit');
         $status = Status::findOrFail($id);
         return view('pages.status.edit',compact('status'));
     }
@@ -71,8 +64,9 @@ class StatusController extends Controller
      */
     public function update(Request $request, $id)
     {
+       abort_if_forbidden('status.edit');
        $request->validate([
-           'name' => 'required'
+           'name' => 'required|unique:statuses,name,'.$id
        ]);
 
         $status = Status::findOrFail($id);
@@ -91,6 +85,7 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
+        abort_if_forbidden('status.delete');
         $status = Status::findOrFail($id);
         $count = $status->students()->count();
         if ($count)

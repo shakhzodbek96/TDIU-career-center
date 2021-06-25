@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Status</h1>
+                    <h1>Fakultet</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">@lang('global.home')</a></li>
-                        <li class="breadcrumb-item active">Statuslar</li>
+                        <li class="breadcrumb-item active">Fakultetlar</li>
                     </ol>
                 </div>
             </div>
@@ -24,9 +24,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Statuslar</h3>
-                        @can('status.add')
-                            <a href="{{ route('statusCreate') }}" class="btn btn-success btn-sm float-right">
+                        <h3 class="card-title">Fakultetlar</h3>
+                        @can('faculty.add')
+                            <a href="{{ route('facultyCreate') }}" class="btn btn-success btn-sm float-right">
                                 <span class="fas fa-plus-circle"></span>
                                 @lang('global.add')
                             </a>
@@ -39,23 +39,23 @@
                             <thead>
                             <tr>
                                 <th>#ID</th>
-                                <th>Status nomi</th>
+                                <th>Fakultet nomi</th>
                                 <th class="w-25">@lang('global.actions')</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($statuses as $status)
+                            @foreach($faculties as $faculty)
                                 <tr>
-                                    <td>{{ $status->id }}</td>
-                                    <td>{{ $status->name }}</td>
+                                    <td>{{ $faculty->id }}</td>
+                                    <td>{{ $faculty->name }}</td>
                                     <td class="text-center">
-                                        <form action="{{ route('statusDelete',$status->id) }}" method="post">
+                                        <form action="{{ route('facultyDelete',$faculty->id) }}" method="post">
                                             @csrf
                                             <div class="btn-group">
-                                                @can('status.edit')
-                                                    <a href="{{ route('statusEdit',$status->id) }}" type="button" class="btn btn-info btn-sm"> @lang('global.edit')</a>
+                                                @can('faculty.edit')
+                                                    <a href="{{ route('facultyEdit',$faculty->id) }}" type="button" class="btn btn-info btn-sm"> @lang('global.edit')</a>
                                                 @endcan
-                                                @can('status.delete')
+                                                @can('faculty.delete')
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <button type="button" class="btn btn-danger btn-sm submitButton"> @lang('global.delete')</button>
                                                 @endcan
