@@ -5,6 +5,8 @@ use App\Http\Controllers\Blade\UserController;
 use App\Http\Controllers\Blade\RoleController;
 use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
+use App\Http\Controllers\Blade\StatusController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,14 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/role/{role_id}/edit',[RoleController::class,'edit'])->name('roleEdit');
     Route::post('/role/update/{role_id}',[RoleController::class,'update'])->name('roleUpdate');
     Route::delete('/role/delete/{id}',[RoleController::class,'destroy'])->name('roleDestroy');
+
+    // Status
+   Route::get('/status',[StatusController::class,'index'])->name('statusIndex');
+   Route::get('/status/create',[StatusController::class,'create'])->name('statusCreate');
+   Route::post('/status/create',[StatusController::class,'store'])->name('statusStore');
+   Route::get('/status/edit/{id}',[StatusController::class,'edit'])->name('statusEdit');
+   Route::post('/status/update/{id}',[StatusController::class,'update'])->name('statusUpdate');
+   Route::delete('/status/destroy/{id}',[StatusController::class,'destroy'])->name('statusDelete');
 });
 
 // Change language session condition

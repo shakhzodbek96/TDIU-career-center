@@ -47,6 +47,16 @@
     </ul>
     @endcanany
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @can('status.view')
+        <li class="nav-item ">
+            <a href="{{ route('statusIndex') }}" class="nav-link">
+                <i class="far fa-arrow-alt-circle-right"></i>
+                <p>Status</p>
+            </a>
+        </li>
+        @endcan
+    </ul>
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
             <a href="" class="nav-link">
             <i class="fas fa-palette"></i>
@@ -77,7 +87,7 @@
             </ul>
         </li>
     </ul>
-{{--    @can('card.main')--}}
+    @can('stasus.main')
 
-{{--    @endcan--}}
+    @endcan
 </nav>
