@@ -7,6 +7,8 @@ use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\StatusController;
 use App\Http\Controllers\Blade\FacultyController;
+use App\Http\Controllers\Blade\GroupController;
+use App\Http\Controllers\Blade\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,22 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/faculty/edit/{id}',[FacultyController::class,'edit'])->name('facultyEdit');
     Route::post('/faculty/update/{id}',[FacultyController::class,'update'])->name('facultyUpdate');
     Route::delete('/faculty/destroy/{id}',[FacultyController::class,'destroy'])->name('facultyDelete');
+
+    // Groups
+    Route::get('/group',[GroupController::class,'index'])->name('groupIndex');
+    Route::get('/group/create',[GroupController::class,'create'])->name('groupCreate');
+    Route::post('/group/create',[GroupController::class,'store'])->name('groupStore');
+    Route::get('/group/edit/{id}',[GroupController::class,'edit'])->name('groupEdit');
+    Route::post('/group/update/{id}',[GroupController::class,'update'])->name('groupUpdate');
+    Route::delete('/group/destroy/{id}',[GroupController::class,'destroy'])->name('groupDelete');
+
+    // Students
+    Route::get('/student',[StudentController::class,'index'])->name('studentIndex');
+    Route::get('/student/create',[StudentController::class,'create'])->name('studentCreate');
+    Route::post('/student/create',[StudentController::class,'store'])->name('studentStore');
+    Route::get('/student/edit/{id}',[StudentController::class,'edit'])->name('studentEdit');
+    Route::post('/student/update/{id}',[StudentController::class,'update'])->name('studentUpdate');
+    Route::delete('/student/destroy/{id}',[StudentController::class,'destroy'])->name('studentDelete');
 
 
 });

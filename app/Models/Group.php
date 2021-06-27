@@ -23,4 +23,9 @@ class Group extends Model
     {
         return $this->hasMany(Student::class);
     }
+
+    public function studyYears():string
+    {
+        return ($this->begin ?? '').' / '.($this->end ?? '');
+    }
 }

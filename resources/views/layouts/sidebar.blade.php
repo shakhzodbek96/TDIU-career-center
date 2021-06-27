@@ -63,6 +63,22 @@
                 </a>
             </li>
         @endcan
+        @can('group.view')
+            <li class="nav-item ">
+                <a href="{{ route('groupIndex') }}" class="nav-link {{ Request::is('group*') ? "active":'' }}">
+                    <i class="far fa-arrow-alt-circle-right"></i>
+                    <p>Guruh</p>
+                </a>
+            </li>
+        @endcan
+        @can('student.view')
+            <li class="nav-item ">
+                <a href="{{ route('studentIndex') }}" class="nav-link {{ Request::is('student*') ? "active":'' }}">
+                    <i class="far fa-arrow-alt-circle-right"></i>
+                    <p>Student</p>
+                </a>
+            </li>
+        @endcan
     </ul>
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">

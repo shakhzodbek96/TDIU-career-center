@@ -14,7 +14,7 @@ class FacultyController extends Controller
     public function index()
     {
         abort_if_forbidden('faculty.view');
-        $faculties = Faculty::all();
+        $faculties = Faculty::with('groups')->latest()->get();
         return view('pages.faculty.index',compact('faculties'));
     }
 
